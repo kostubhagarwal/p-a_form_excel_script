@@ -13,8 +13,15 @@ print (files)
 
 for file in files:
     if file.endswith('.xlsm'):
-        
-        df=df.append(pd.read_excel(file, sheet_name = "Sheet2"))
+        x = file.cell(4,6)
+       
+        if x == 0:
+            SheetN = "Sheet2"
+
+        if x == 1:
+            SheetN = "Sheet3"
+
+        df=df.append(pd.read_excel(file, sheet_name = SheetN))
         df=df.fillna("")
 
 print(df)
